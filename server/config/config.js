@@ -6,23 +6,28 @@ var config = {
   development: {
     root: rootPath,
     app: {
-      name: 'myPics'
+      name: 'ToDo'
     },
     port: 5000,
-    db: 'mongodb://127.0.0.1/mypics-dev'
+    db: 'mongodb://127.0.0.1/todo-dev',
+    uploads: rootPath + "/public/uploads/",
+    secret: "cayennedlikedhistreats"    
 },
 
  test: {    
   root: rootPath,    
-  app: {      name: 'myPics'    },    
+  app: {      name: 'ToDo'    },    
   port: 4000,  
-  db: 'mongodb://127.0.0.1/mypics-test'
+  db: 'mongodb://127.0.0.1/todo-test',  
+  secret: "cayennedlikedhistreats"  
 },  
  production: {    
               root: rootPath,    
-              app: {      name: 'myPics'    },    
+              app: {      name: 'ToDo'    },    
                port: 80,  
-               db: 'mongodb://127.0.0.1/mypics'}
+               db: 'mongodb://127.0.0.1/todo'},
+               secret: "cayennedlikedhistreats"
+               
   };
 
 

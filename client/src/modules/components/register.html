@@ -1,0 +1,68 @@
+<template>
+        <!DOCTYPE html>
+        <html lang="en">
+            <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+              <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+              <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+              <style>
+              h1{
+                  text-align: "center";
+              }
+              label{
+                  text-align: "center";
+              }
+              div.pt3{
+                text-align:center;
+                padding: 1px 25px !important;
+              }
+              .button {
+                background-color: #0F6B12;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display:block; 
+                width:20%; 
+                margin:0 auto;
+                font-size: 16px;
+                cursor: pointer;
+            }
+              </style>
+            </head>
+            <body>
+                <div class="w3-container w3-blue">
+                <h1>Input Form</h2>
+                </div>
+                <form class="w3-container">
+                        <p>
+                        <input value.bind="user.firstName">
+                        <div class="pt3">
+                        <label>First Name</label></p>
+                        </div>
+                        <p>
+                        <input value.bind="user.lastName">
+                        <div class="pt3">
+                        <label>Last Name</label></p>
+                        </div>
+                        <p>
+                        <input value.bind="user.email">
+                        <div class="pt3">
+                        <label>E-mail</label></p>
+                        </div>
+                        <p>
+                        <input value.bind="user.password">
+                        <div class="pt3">
+                        <label>Password</label></p>
+                        </div>
+                <button class="button" click.trigger="save()">Save</button>
+                </form>
+            </body>
+        </html>
+    </template>
+    

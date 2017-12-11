@@ -1,0 +1,115 @@
+<template> 
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+          <title>Bootstrap 4 Example</title>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+          <style>
+          div.pt1{
+            padding: 25px;
+            text-align: center;
+            box-sizing: border-box;
+            background-color: green;
+            font-style: italic;
+            }
+            div.pt2{
+            padding: 15px;
+            text-align:center;  
+            font-size: 14px !important;  
+            }
+            .button {
+            background-color: #0F6B12;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display:block; 
+            width:20%; 
+            margin:0 auto;
+            font-size: 16px;
+            cursor: pointer;
+            }
+            a:link {
+            color: black; 
+            background-color: transparent; 
+            text-decoration: none;
+            display:block; 
+            width:40%; 
+            margin:0 auto;
+            text-align: center;
+            }
+            a:visited {
+            color: pink;
+            background-color: transparent;
+            text-decoration: none;
+            display:block; 
+            width:40%; 
+            margin:0 auto;
+            text-align: center;
+            }
+            a:hover {
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+            display:block; 
+            width:40%; 
+            margin:0 auto;
+            text-align: center;
+            }
+            a:active {
+            color: yellow;
+            background-color: transparent;
+            text-decoration: underline;
+            display:block; 
+            width:40%; 
+            margin:0 auto;
+            text-align: center;
+            }
+            #grad1 {
+            height:2000px;
+            background: green; 
+            background: -webkit-linear-gradient(left top, green, yellow); 
+            background: -o-linear-gradient(bottom right, green, yellow); 
+            background: -moz-linear-gradient(bottom right, green, yellow); 
+            background: linear-gradient(to bottom right, green, yellow);
+            background-size: cover;}
+            input{
+            width:35% !important;
+            display:block !important; 
+            width:40% !important; 
+            margin:0 auto !important;
+            }
+          </style>
+        </head>
+        <body>
+            <div id="grad1">
+            <h1 style="text-align:center;background-color:yellow;font-family:tahoma;font-weight:bold;font-size: 26px;">JOSEPH GARRISON'S TO-DO LIST</h1>
+            <div class="pt1">
+            <h2 style="text-align:center;color:white;">Login Page</h2></div>
+            <div class="container">
+                <div id="errorMsg" innerhtml.bind="loginError"></div>
+                <div class="pt2">
+                <label for="email">Email</label>
+                <input value.bind="email" type="email" autofocus class="form-control" id="email" placeholder="email@service.com"></input>
+                </div>
+                <div class="pt2">
+                <label for="password">Password</label>
+                <input value.bind="password" type="password" class="form-control" id="password" placeholder="Password"></input>
+                </div>
+                <button class="button" click.trigger="login()">Login</button>  
+                <h2>
+                <a href="registerLink" click.trigger="showRegister()">First-time user? Click here to register</a>
+                </h2>
+            </div>
+            </div>
+        </body>
+    </html>
+
+</template>
+    
