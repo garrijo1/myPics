@@ -2,7 +2,7 @@ var express = require('express'),
     router = express.Router(),
     logger = require('../../config/logger'),
     mongoose = require('mongoose'),
-    Todo = mongoose.model('todo'),
+    mypics = mongoose.model('mypics'),
     passportService = require('../../config/passport'),
     passport = require('passport'),
     multer = require('multer'),
@@ -15,17 +15,17 @@ var requireAuth = passport.authenticate('jwt', { session: false });
 module.exports = function (app, config) {
     app.use('/api', router);
     
-    router.get('/todo/user/:userId', requireAuth,function (req, res, next){
-        logger.log('Find ToDo by Id', 'verbose');
+    router.get('/mypics/user/:mypicsId', requireAuth,function (req, res, next){
+        logger.log('Find mypics by Id', 'verbose');
 
-        var query = Todo.find({userId:req.params.userId})
+        var query = mypics.find({userId:req.params.userId})
         .sort(req.query.order)
         .exec()
         .then(result => {
            if(result) {
              res.status(200).json(result);
          } else {
-             res.status(404).json({message: "No todo"});
+             res.status(404).json({message: "No mypics"});
          }
         })
         .catch(err => {
@@ -37,13 +37,13 @@ module.exports = function (app, config) {
 
     // });
 
-    router.get('/todo/:todoId', requireAuth, function (req, res, next){
-        logger.log('Get My ToDo List'+ req.params.userId, 'verbose');
+    router.get('/mypics/:mypicsId', requireAuth, function (req, res, next){
+        logger.log('Get My mypics List'+ req.params.userId, 'verbose');
 
-        Todo.findById(req.params.todoId)
-                    .then(todo => {
-                        if(todo){
-                            res.status(200).json(todo);
+        mypics.findById(req.params.mypicsId)
+                    .then(mypics => {
+                        if(mypics){
+                            res.status(200).json(mypics);
                         } else {
                             res.status(404).json({message: "No user found"});
                         }
@@ -56,11 +56,11 @@ module.exports = function (app, config) {
     //     res.status(200).json({message: 'Get My ToDo List'+ req.params.userId});
     // });    
 
-    router.post('/todo', function(req, res, next){
-        logger.log('Create todo', 'verbose');
+    router.post('/mypics', function(req, res, next){
+        logger.log('Create mypics', 'verbose');
 
-        var todo = new Todo(req.body);
-        todo.save()
+        var myPics = new mypics(req.body);
+        myPics.save()
        .then(result => {
            res.status(201).json(result);
        })
@@ -88,23 +88,23 @@ module.exports = function (app, config) {
       });
       var upload = multer({storage:storage});
     
-    router.post('/todo/upload/:userId/:todoId', upload.any(), function(req, res, next){
-            logger.log('Upload file for todo ' + req.params.todoId + ' and ' + req.params.userId, 'verbose');
+    router.post('/mypics/upload/:userId/:mypicsId', upload.any(), function(req, res, next){
+            logger.log('Upload file for mypics ' + req.params.todoId + ' and ' + req.params.userId, 'verbose');
             
-            Todo.findById(req.params.todoId, function(err, todo){
+            myPics.findById(req.params.todoId, function(err, mypics){
                 if(err){ 
                     return next(err);
                 } else {     
                     if(req.files){
-                        todo.file = {
+                        mypics.file = {
                             fileName : req.files[0].filename,
                             originalName : req.files[0].originalname,
                             dateUploaded : new Date()
                         };
                     }           
-                    todo.save()
-                        .then(todo => {
-                            res.status(200).json(todo);
+                    mypics.save()
+                        .then(mypics => {
+                            res.status(200).json(mypics);
                         })
                         .catch(error => {
                             return next(error);
@@ -116,14 +116,14 @@ module.exports = function (app, config) {
 
     // });
     
-    router.put('/todo/:todoId', requireAuth, function (req, res, next){
-        logger.log('Update todo with id todoid'+ req.params.todoId, 'verbose');
+    router.put('/mypics/:mypicsId', requireAuth, function (req, res, next){
+        logger.log('Update mypics with id mypicsId'+ req.params.todoId, 'verbose');
 
         
-        Todo.findOneAndUpdate({_id: req.params.todoId}, 		
+        myPics.findOneAndUpdate({_id: req.params.todoId}, 		
             req.body, {new:true, multi:false})
-                .then(todo => {
-                    res.status(200).json(todo);
+                .then(mypics => {
+                    res.status(200).json(mypics);
                 })
                 .catch(error => {
                     return next(error);
@@ -133,12 +133,12 @@ module.exports = function (app, config) {
     //     res.status(200).json({message: 'Update ToDo'+ req.params.userId});
     // });  
 
-    router.delete('/todo/:todoId', requireAuth, function (req, res, next){
-        logger.log('Delete ToDo'+ req.params.userId, 'verbose');
+    router.delete('/mypics/:mypicsId', requireAuth, function (req, res, next){
+        logger.log('Delete mypics'+ req.params.userId, 'verbose');
 
-        Todo.remove({ _id: req.params.todoId })
+        myPics.remove({ _id: req.params.mypicsId })
                 .then(user => {
-                    res.status(200).json({msg: "todo Deleted"});
+                    res.status(200).json({msg: "mypics Deleted"});
                 })
                 .catch(error => {
                     return next(error);

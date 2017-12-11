@@ -1,7 +1,7 @@
 {
-  "name": "todo",
+  "name": "mypics",
   "version": "1.0.0",
-  "description": "Joseph Garrison todo list",
+  "description": "Joseph Garrison's Pictures",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/test.js"

@@ -11,4 +11,4 @@ var mySchema = new Schema({
 });
 
 module.exports = 
- Mongoose.model('myPics', mySchema);
+ Mongoose.model('mypics', mySchema);

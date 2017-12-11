@@ -1,28 +1,28 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { AuthService } from 'aurelia-auth';
-import { ToDo } from '../resources/data/todo';
+import { ToDo } from '../resources/data/mypics';
 
-@inject(Router, AuthService, ToDo)
+@inject(Router, AuthService, myPics)
 export class List {
-  constructor(router, auth, todo) {
+  constructor(router, auth, mypics) {
     this.router = router;
     this.auth = auth;
-    this.todo = todo;
+    this.mypics = mypics;
     this.priorities = ['Low', 'Medium', 'High', 'Critical'];
     this.user = JSON.parse(sessionStorage.getItem('user'));
     this.showList = true;
-    this.title = "Joe Has Things ToDo!";
+    this.title = "Joe Has Pics!";
       this.showCompleted = false;
   }
 
   async activate() {
-    await this.todo.getUserTodos(this.user._id);
+    await this.mypics.getUsermypics(this.user._id);
   }
 
-  createTodo() {
-    this.todoObj = {
-      todo: "",
+  createmypics() {
+    this.mypicsObj = {
+      mypics: "",
       description: "",
       dateDue: new Date(),
       userId: this.user._id,
@@ -31,15 +31,15 @@ export class List {
     this.showList = false;
   }
 
-  async saveTodo() {
-    if (this.todoObj) {
-      let response = await this.todo.save(this.todoObj);
+  async savemypics() {
+    if (this.mypicsObj) {
+      let response = await this.mypics.save(this.mypicsObj);
       if (response.error) {
-        alert("There was an error creating the Todo");
+        alert("There was an error creating the mypics");
       } else {
-        var todoId = response._id;
+        var mypicsId = response._id;
         if (this.filesToUpload && this.filesToUpload.length) {
-          await this.todo.uploadFile(this.filesToUpload, this.user._id, todoId);
+          await this.mypics.uploadFile(this.filesToUpload, this.user._id, mypicsId);
           this.filesToUpload = [];
         }
       }
@@ -47,19 +47,19 @@ export class List {
     }
   }
 
-  editTodo(todo) {
-    this.todoObj = todo;
+  editmypics(mypics) {
+    this.mypicsObj = mypics;
     this.showList = false;
   }
 
-  deleteTodo(todo) {
-    this.todo.deleteTodo(todo._id);
+  deletemypics(mypics) {
+    this.mypics.deletemypics(mypics._id);
   }
 
-  completeTodo(todo) {
-    todo.completed = !todo.completed;
-    this.todoObj = todo;
-    this.saveTodo();
+  completeTodo(mypics) {
+    mypics.completed = !mypics.completed;
+    this.mypicsObj = mypics;
+    this.savemypics();
   }
 
   toggleShowCompleted() {
