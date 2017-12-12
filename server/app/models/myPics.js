@@ -1,13 +1,16 @@
 var Mongoose = require('mongoose');
 var Schema = Mongoose.Schema;
+priorities = ['Low', 'Medium','High','Critical'];
 
 var mySchema = new Schema({
-    firstName:{type:String, required: true},
-    lastName:{type:String, required: true},
-    email:{type:String, required: true, unique: true},
-    password:{type: String, required: true},
-    dateRegistered:{type:Date, default:Date.now},
-    status:{type: Boolean, default: true},
+    userId: {type:Schema.Types.ObjectId,required:true},
+    mypics:{type:String, required: true},
+    description:{type:String},
+    priority:{type:String, enum:priorities},
+    dateCreated:{type:Date, default:Date.now},
+    dateDue:{type:Date,default:Date.now},
+    completed: {type:Boolean, default:false},
+    file: {fileName: String, originalName: String, dateUploaded: Date }
 });
 
 module.exports = 

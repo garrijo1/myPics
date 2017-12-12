@@ -9,7 +9,7 @@ var config = {
       name: 'mypics'
     },
     port: 5000,
-    db: 'mongodb://127.0.0.1/mypics-dev',
+    db: 'mongodb://127.0.0.1/mypic-dev',
     uploads: rootPath + "/public/uploads/",
     secret: "cayennedlikedhistreats"    
 },

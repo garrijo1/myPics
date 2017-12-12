@@ -32,7 +32,7 @@ async save(mypics){
             }
     }
 
-async deleteTodo(id){
+async deletemypics(id){
     let response = await this.data.delete(this.MYPICS_SERVICE + "/" + id);
     if(!response.error){
         for(let i = 0; i < this.mypicsArray.length; i++){

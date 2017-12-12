@@ -17,7 +17,7 @@ var express = require('express'),
 module.exports = function (app, config) {
     app.use('/api', router);
     
-    router.get('/users', requireAuth, function (req, res, next){
+    router.get('/users', function (req, res, next){
         logger.log('Get all users', 'verbose');
 
        var query = User.find()

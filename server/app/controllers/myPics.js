@@ -15,7 +15,7 @@ var requireAuth = passport.authenticate('jwt', { session: false });
 module.exports = function (app, config) {
     app.use('/api', router);
     
-    router.get('/mypics/user/:mypicsId', requireAuth,function (req, res, next){
+    router.get('/mypics/user/:userId', requireAuth,function (req, res, next){
         logger.log('Find mypics by Id', 'verbose');
 
         var query = mypics.find({userId:req.params.userId})
@@ -59,7 +59,7 @@ module.exports = function (app, config) {
     router.post('/mypics', function(req, res, next){
         logger.log('Create mypics', 'verbose');
 
-        var myPics = new mypics(req.body);
+        var myPics = new mypics(req.body);       
         myPics.save()
        .then(result => {
            res.status(201).json(result);
@@ -89,9 +89,9 @@ module.exports = function (app, config) {
       var upload = multer({storage:storage});
     
     router.post('/mypics/upload/:userId/:mypicsId', upload.any(), function(req, res, next){
-            logger.log('Upload file for mypics ' + req.params.todoId + ' and ' + req.params.userId, 'verbose');
+            logger.log('Upload file for mypics ' + req.params.mypicsId + ' and ' + req.params.userId, 'verbose');
             
-            myPics.findById(req.params.todoId, function(err, mypics){
+            mypics.findById(req.params.mypicsId, function(err, mypics){
                 if(err){ 
                     return next(err);
                 } else {     
@@ -116,11 +116,11 @@ module.exports = function (app, config) {
 
     // });
     
-    router.put('/mypics/:mypicsId', requireAuth, function (req, res, next){
-        logger.log('Update mypics with id mypicsId'+ req.params.todoId, 'verbose');
+    router.put('/mypics/:mypicsId', function (req, res, next){
+        logger.log('Update mypics with id mypicsId'+ req.params.mypicsId, 'verbose');
 
         
-        myPics.findOneAndUpdate({_id: req.params.todoId}, 		
+        mypics.findOneAndUpdate({_id: req.params.mypicsId}, 		
             req.body, {new:true, multi:false})
                 .then(mypics => {
                     res.status(200).json(mypics);
@@ -136,7 +136,7 @@ module.exports = function (app, config) {
     router.delete('/mypics/:mypicsId', requireAuth, function (req, res, next){
         logger.log('Delete mypics'+ req.params.userId, 'verbose');
 
-        myPics.remove({ _id: req.params.mypicsId })
+        mypics.remove({ _id: req.params.mypicsId })
                 .then(user => {
                     res.status(200).json({msg: "mypics Deleted"});
                 })
