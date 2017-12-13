@@ -9,7 +9,7 @@ var mySchema = new Schema({
     priority:{type:String, enum:priorities},
     dateCreated:{type:Date, default:Date.now},
     dateDue:{type:Date,default:Date.now},
-    completed: {type:Boolean, default:false},
+    //completed: {type:Boolean, default:false},
     file: {fileName: String, originalName: String, dateUploaded: Date }
 });
 

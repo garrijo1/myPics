@@ -3,13 +3,13 @@
 		<div class="card-body">
             <span><i click.trigger="back()" class="fa fa-arrow-left fa-lg"				
                 aria-hidden="true"></i></span>
+                <label for="return arrow">-- Click here to return to your gallery</label>
 		</div>
 	</div>	
-	<form>
 		<div class="form-group topMargin">
-			  <label for="mypicsInput">mypics *</label>
+			  <label for="mypicsInput"><br>Pic Description</label>
               <input value.bind="mypicsObj.mypics" type="text" class="form-control" id="mypicsInput" aria-describedby="mypicsHelp" placeholder="Enter myPics">
-			  <small id="mypicsHelp" class="form-text text-muted">A short name for the mypics.</small>
+			  <small id="mypicsHelp" class="form-text text-muted">Type a brief description of the pic</small>
 		</div>
         <div class="form-group">
             <label for="descriptionInput">Description</label>
@@ -24,7 +24,7 @@
         <div class="row">
                 <div class="col">
                         <label class="btn btn-secondary">Browse for files&hellip;<input type="file" style="display: none;" change.delegate="changeFiles()" files.bind="files"></label>
-                        <small id="fileHelp" class="form-text text-muted">Upload any files that will be useful.</small>
+                        <small id="fileHelp" class="form-text text-muted">Upload your pic here.</small>
                 </div>	
                 <div class="col-8">
                         <ul>
@@ -33,21 +33,20 @@
                         </ul>
                 </div>
         </div>
-<div class="form-group">
+<!-- <div class="form-group">
                 <label for="priorityInput">Priority</label>
                 <select value.bind="mypicsObj.priority" class="form-control" id="exampleFormControlSelect2">
                     <option repeat.for="priority of priorities" value.bind="priority">
             ${priority}</option>
                 </select>
                 <small id="priorityHelp" class="form-text text-muted">How urgent is this?</small>
-            </div>      
+            </div>       -->
             <div class="form-group">
-                <label for="dueDateInput">Due Date *</label>
+                <label for="dueDateInput">Pic Date</label>
                 <input type="date" class="form-control" value.bind="mypicsObj.dateDue">
                 <small id="dueDateHelp" class="form-text text-muted">
-            The date to ToDo is due.</small>
+            The date the pic was taken</small>
             </div>  
             <button click.trigger="savemypics()" class="btn btn-primary topMargin">Save</button>
-        </form>
     </template>
     

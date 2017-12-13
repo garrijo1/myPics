@@ -13,7 +13,7 @@ export class List {
     this.user = JSON.parse(sessionStorage.getItem('user'));
     this.showList = true;
     this.title = "Joe Has Pics!";
-      this.showCompleted = false;
+    this.showCompleted = false;
   }
 
   async activate() {
@@ -24,7 +24,7 @@ export class List {
     this.mypicsObj = {
       mypics: "",
       description: "",
-      dateDue: new Date(),
+      picDate: new Date(),
       userId: this.user._id,
       priority: this.priorities[0]
     }

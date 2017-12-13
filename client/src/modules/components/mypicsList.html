@@ -1,30 +1,12 @@
 <template>
         <div class="card topMargin">
             <div class="card-body">
-                <div class="row">
-                <span class="col">
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input change.trigger="toggleShowCompleted()" type="checkbox" 
-                            class="form-check-input">
-                                    Show completed
-                                </label>
-                            </div>
-                        </span>                    
-                    <span class="col">
-                        <span class="rightMargin pull-right"><i click.trigger="logout()" 
-                            class="fa fa-sign-out fa-lg" aria-hidden="true"></i></span>
-                        <span class=" rightMargin pull-right"><i click.trigger="createmypics()"
-                            class="fa fa-plus fa-lg" aria-hidden="true"></i></span>
-                    </span>
-                </div>
     <div show.bind="mypics.mypicsArray.length">
 		<table class="table">
 				<thead>
 					<tr>
-                        <th>MyPic</th>
-                        <th>Due Date</th>
-                        <th>Priority</th>
+                        <th>Pic Description</th>
+                        <th>Pic Date</th>
                         <th>File</th>
                         <th>Edit</th>                        
 					</tr>
@@ -33,12 +15,11 @@
                         <tr class="${mypics.priority === 'Critical' ? 'table-secondary' : ' '}" repeat.for="mypics of mypics.mypicsArray | completed:showCompleted">
                             <td>${mypics.mypics}</td>
                             <td>${mypics.dateDue | dateFormat}</td>
-                            <td>${mypics.priority}</td>
-                            <td><a href="http://localhost:5000/uploads/${user._id}/${todo.file.fileName}" target="_blank">${mypics.file.originalName}</a></td>                            
+                            <td><a href="http://localhost:5000/uploads/${user._id}/${mypics.file.fileName}" target="_blank">${mypics.file.originalName}</a></td>                            
                             <td><i click.trigger="editmypics(mypics)" class="fa fa-pencil rightMargin" aria-hidden="true"></i>
                             <i click.trigger="deletemypics(mypics)"class="fa fa-trash rightMargin" aria-hidden="true"></i>
-                            <i show.bind="!mypics.completed" click.trigger="completemypics(mypics)" class="fa fa-square-o" aria-hidden="true"></i>
-                            <i show.bind="mypics.completed " click.trigger="completemypics(mypics)" class="fa fa-check" aria-hidden="true"></i>
+                            <!--<i show.bind="!mypics.completed" click.trigger="completemypics(mypics)" class="fa fa-square-o" aria-hidden="true"></i>
+                            <i show.bind="mypics.completed " click.trigger="completemypics(mypics)" class="fa fa-check" aria-hidden="true"></i>-->
                             </td>                                                        
                         </tr>
                     </tbody>                    
@@ -46,8 +27,25 @@
 	</div>
 	<div show.bind="!mypics.mypicsArray.length">
 		<h2>Apparently, you don't have no pics!</h2>
-	</div>
-
+        </div>
+        <div class="row">
+                            <!--<span class="col">
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input change.trigger="toggleShowCompleted()" type="checkbox" 
+                                        class="form-check-input">
+                                                Show completed
+                                            </label>
+                                        </div>
+                                    </span>-->                    
+                                <br><br>
+                                <span class="col">
+                                    <!--<span class="rightMargin pull-right"></span>>jjjj<i click.trigger="logout()" 
+                                        class="fa fa-sign-out fa-lg" aria-hidden="true"></i></span>-->
+                                    <span>Click here to add a pic to your gallery  <i click.trigger="createmypics()"
+                                        class="fa fa-plus fa-lg" aria-hidden="true"></i></span>
+                                </span>
+                            </div>
             </div>
         </div>
 </template>
