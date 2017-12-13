@@ -8,6 +8,7 @@ export class mypics {
         		this.data = data;
         		this.MYPICS_SERVICE = 'mypics';
                 this.mypicsArray = [];
+                this.galleriesArray = [];
    		 }
 async getUsermypics(id){
     let response = await this.data.get(this.MYPICS_SERVICE + "/user/" + id);

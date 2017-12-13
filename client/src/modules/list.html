@@ -1,7 +1,16 @@
 <template>
-	    <h1>${message}</h1>	
-	    <compose show.bind="showList" view="./components/mypicsList.html"></compose>
-	    <compose show.bind="!showList" view="./components/mypicsForm.html"></compose>
-		<!-- <button click.trigger="logout()">Logout</button>	 -->
-</template>
+
+	<h1>${message}</h1>
+	<select value.bind="showWhat" id="myList">
+		<option>-- Select and Option --</option>
+		<option value.bind = "1">View Gallery</option>
+		<option value.bind = "2">Add Pic</option>
+		<option value.bind = "3">Add Gallery</option>
+	  </select>
+	  
+	<compose show.bind="showWhat === '1'" view="./components/galleriesList.html"></compose>
 	
+	<compose show.bind="showWhat === '2'" view="./components/mypicsForm.html"></compose>
+	<compose show.bind="showWhat === '3'" view="./components/galleriesForm.html"></compose>
+<!--	 <button click.trigger="logout()">Logout</button>	 -->
+</template> 

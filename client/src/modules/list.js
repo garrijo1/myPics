@@ -11,7 +11,7 @@ export class List {
     this.mypics = mypics;
     this.priorities = ['Low', 'Medium', 'High', 'Critical'];
     this.user = JSON.parse(sessionStorage.getItem('user'));
-    this.showList = true;
+    // this.showWhat = "1";
     this.title = "Joe Has Pics!";
     this.showCompleted = false;
   }
