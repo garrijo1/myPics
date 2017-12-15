@@ -15,10 +15,10 @@ var requireAuth = passport.authenticate('jwt', { session: false });
 module.exports = function (app, config) {
     app.use('/api', router);
     
-    router.get('/mypics/user/:userId', requireAuth,function (req, res, next){
-        logger.log('Find mypics by Id', 'verbose');
+    router.get('/mypics/galleries/:galleriesId', requireAuth,function (req, res, next){
+        logger.log('Find galleries by Id', 'verbose');
 
-        var query = mypics.find({userId:req.params.userId})
+        var query = mypics.find({galleriesId:req.params.galleriesId})
         .sort(req.query.order)
         .exec()
         .then(result => {

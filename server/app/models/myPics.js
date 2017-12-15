@@ -3,7 +3,7 @@ var Schema = Mongoose.Schema;
 priorities = ['Low', 'Medium','High','Critical'];
 
 var mySchema = new Schema({
-    userId: {type:Schema.Types.ObjectId,required:true},
+    galleriesId: {type:Schema.Types.ObjectId,required:true},
     mypics:{type:String, required: true},
     description:{type:String},
     priority:{type:String, enum:priorities},

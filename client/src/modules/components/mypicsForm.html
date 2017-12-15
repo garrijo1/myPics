@@ -1,21 +1,30 @@
 <template>
-	<div class="card topMargin">
+        <select  value.bind="mypicsObj.galleriesId">
+                <option>-- Select and Option --</option>
+                <option value.bind = 'gallery._id' repeat.for = "gallery of mypics.galleriesArray">${gallery.galleries}</option>
+        </select>
+	<!-- <div class="card topMargin">
 		<div class="card-body">
             <span><i click.trigger="back()" class="fa fa-arrow-left fa-lg"				
                 aria-hidden="true"></i></span>
                 <label for="return arrow">-- Click here to return to your gallery</label>
 		</div>
-	</div>	
+	</div>	 -->
 		<div class="form-group topMargin">
-			  <label for="mypicsInput"><br>Pic Description</label>
+			  <label for="mypicsInput"><br>Pic Label</label>
               <input value.bind="mypicsObj.mypics" type="text" class="form-control" id="mypicsInput" aria-describedby="mypicsHelp" placeholder="Enter myPics">
-			  <small id="mypicsHelp" class="form-text text-muted">Type a brief description of the pic</small>
-		</div>
-        <div class="form-group">
-            <label for="descriptionInput">Description</label>
-            <textarea value.bind="mypicsObj.description" type="text" class="form-control" id="descriptionInput" aria-describedby="descriptionHelp" placeholder="Enter Description"></textarea>
-            <small id="descriptionHelp" class="form-text text-muted">A longer description if required.</small>
-        </div>
+			  <small id="mypicsHelp" class="form-text text-muted">Give your pic a label</small>
+                </div>
+                <div class="form-group topMargin">
+                        <label for="mypicsInput"><br>Gallery name</label>
+            <input value.bind="mypicsObj.mypics" type="text" class="form-control" id="mypicsInput" aria-describedby="mypicsHelp" placeholder="Enter myPics">
+                        <small id="mypicsHelp" class="form-text text-muted">Type name of gallery here</small>
+              </div>
+                <div class="form-group">
+                        <label for="descriptionInput">Description</label>
+                        <textarea value.bind="mypicsObj.description" type="text" class="form-control" id="descriptionInput" aria-describedby="descriptionHelp" placeholder="Enter Description"></textarea>
+                        <small id="descriptionHelp" class="form-text text-muted">A longer description if required.</small>
+                </div>
        <!-- <div class="form-group">
                 <label for="dueDateInput">Due Date *</label>
                 <flat-picker value.bind="todoObj.dateDue"></flat-picker>
