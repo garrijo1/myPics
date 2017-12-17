@@ -1,8 +1,17 @@
+<html>
 <template>
-
+	<head>
+    <style>
+        #inner {
+            margin-left:50px; 
+            margin-right:50px;
+        }
+    </style>
+</head>
+	<div id="inner">
 	<h1>${message}</h1>
 	<select  value.bind="showWhat" change.trigger="optionSelected()" id="myList">
-		<option>-- Select and Option --</option>
+		<option>-- What would you like to see --</option>
 		<option value.bind = "1">View Galleries</option>
 		<option value.bind = "2">Add Pic</option>
 		<option value.bind = "3">Add Gallery</option>
@@ -12,4 +21,6 @@
 	<compose show.bind="showWhat === '2'" view="./components/mypicsForm.html"></compose>
 	<compose show.bind="showWhat === '3'" view="./components/galleriesForm.html"></compose>
 <!--	 <button click.trigger="logout()">Logout</button>	 -->
+</div>
 </template> 
+</html>

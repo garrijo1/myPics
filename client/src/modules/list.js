@@ -9,7 +9,6 @@ export class List {
     this.router = router;
     this.auth = auth;
     this.mypics = mypics;
-    this.priorities = ['Low', 'Medium', 'High', 'Critical'];
     this.user = JSON.parse(sessionStorage.getItem('user'));
     // this.showWhat = "1";
     this.title = "Joe Has Pics!";
