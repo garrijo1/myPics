@@ -1,60 +1,62 @@
 <template>
-        <div show.bind="showGalleryList">
-                <div class="card topMargin">
-
-                        <div class="card-body">
-
-                                <div show.bind="mypics.galleriesArray.length">
-                                        <table class="table">
-                                                <thead>
-                                                        <tr>
-                                                                <th>Gallery Title</th>
-                                                                <th>Gallery Description</th>
-                                                        </tr>
-                                                </thead>
-                                                <tbody>
-
-                                                        <tr click.trigger="showPhotos(gallery)" repeat.for="gallery of mypics.galleriesArray">
-
-                                                                <td>${gallery.galleries}</td>
-
-                                                                <td>${gallery.description}</td>
-                                                                <td><i click.trigger="editgalleries(gallery)" class="fa fa-pencil rightMargin"
-                                                                                aria-hidden="true"></i>
-                                                                        <i click.trigger="deletegalleries(gallery)" class="fa fa-trash rightMargin" aria-hidden="true"></i>
-                                                                </td>
-                                                        </tr>
-                                                </tbody>
-                                        </table>
+                <div show.bind="showGalleryList">
+                        <div class="card topMargin">
+        
+                                <div class="card-body">
+        
+                                        <div show.bind="mypics.galleriesArray.length">
+                                                <table class="table">
+                                                        <thead>
+                                                                <tr>
+                                                                        <th>Gallery Title</th>
+                                                                        <th>Gallery Description</th>
+                                                                </tr>
+                                                        </thead>
+                                                        <tbody>
+        
+                                                                <tr click.trigger="showPhotos(gallery)" repeat.for="gallery of mypics.galleriesArray">
+        
+                                                                        <td>${gallery.galleries}</td>
+        
+                                                                        <td>${gallery.description}</td>
+                                                                        <td><i click.trigger="editgalleries(gallery)" class="fa fa-pencil rightMargin"
+                                                                                        aria-hidden="true"></i>
+                                                                                <i click.trigger="deletegalleries(gallery)" class="fa fa-trash rightMargin" aria-hidden="true"></i>
+                                                                        </td>
+                                                                </tr>
+                                                        </tbody>
+                                                </table>
+                                        </div>
+                                        <div show.bind="!mypics.galleriesArray.length">
+                                                <h1>Apparently, you do not have any galleries!</h1>
+                                                <h2>If you would like to add a gallery, select "Add Gallery" in the drop-down box.</h2>
+                                        </div>
+                                        <!-- <div class="row"> -->
+        
+                                        <!--<span class="col">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input change.trigger="toggleShowCompleted()" type="checkbox" 
+                                                class="form-check-input">
+                                                        Show completed
+                                                    </label>
+                                                </div>
+                                            </span>-->
+                                        <!--                 <br><br>
+                                        <span class="col"> -->
+        
+                                        <!--<span class="rightMargin pull-right"></span>>jjjj<i click.trigger="logout()" 
+                                                class="fa fa-sign-out fa-lg" aria-hidden="true"></i></span>-->
+                                        <!--                     <span>Click here to add a pic to your gallery  <i click.trigger="creategalleries()"
+                                                class="fa fa-plus fa-lg" aria-hidden="true"></i></span>
+                                        </span>
+                                    </div> -->
                                 </div>
-                                <div show.bind="!mypics.galleriesArray.length">
-                                        <h1>Apparently, you do not have any galleries!</h1>
-                                        <h2>If you would like to add a gallery, select "Add Gallery" in the drop-down box.</h2>
-                                </div>
-                                <!-- <div class="row"> -->
-
-                                <!--<span class="col">
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input change.trigger="toggleShowCompleted()" type="checkbox" 
-                                        class="form-check-input">
-                                                Show completed
-                                            </label>
-                                        </div>
-                                    </span>-->
-                                <!--                 <br><br>
-                                <span class="col"> -->
-
-                                <!--<span class="rightMargin pull-right"></span>>jjjj<i click.trigger="logout()" 
-                                        class="fa fa-sign-out fa-lg" aria-hidden="true"></i></span>-->
-                                <!--                     <span>Click here to add a pic to your gallery  <i click.trigger="creategalleries()"
-                                        class="fa fa-plus fa-lg" aria-hidden="true"></i></span>
-                                </span>
-                            </div> -->
                         </div>
                 </div>
-        </div>
-        <div show.bind="!showGalleryList">
-                <compose view="./mypicsList.html"></compose>
-        </div>
-</template>
+                <div show.bind="!showGalleryList">
+                        <compose view="./mypicsList.html"></compose>
+                </div>
+        </template>
+
+        
