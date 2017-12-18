@@ -96,8 +96,8 @@ export class List {
   }
 
   editmypics(mypics) {
-    this.ypicsObjm = mypics;
-    this.showList = false;
+    this.mypicsObj = mypics;
+    this.showWhat = "2";
   }
 
   deletemypics(mypics) {

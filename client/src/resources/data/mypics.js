@@ -66,6 +66,18 @@ export class mypics {
             }
         }
     }
+
+    async deletemypics(id) {
+        let response = await this.data.delete(this.MYPICS_SERVICE + "/" + id);
+        if (!response.error) {
+            for (let i = 0; i < this.mypicsArray.length; i++) {
+                if (this.mypicsArray[i]._id === id) {
+                    this.mypicsArray.splice(i, 1);
+                }
+            }
+        }
+    }
+
     async uploadFile(files, userId, mypicsId) {
         let formData = new FormData();
         files.forEach((item, index) => {
